@@ -1,0 +1,11 @@
+﻿@if(TempData["Message"]!=null)
+{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script>
+    @* <div id="successAlert" class="alert alert-success">
+            @TempData["Message"]
+    </div> *@
+    <script type="text/javascript">
+        toaster.success('@TempData["Message"]')
+        </script>
+}

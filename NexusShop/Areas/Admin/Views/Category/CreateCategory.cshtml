@@ -1,0 +1,53 @@
+﻿@using Nexus.Models.Models
+@model Category
+@{
+    var erroMessage = TempData["ErrorAdd"];
+}
+@if (erroMessage != null)
+{
+   <div id="errorAlert" class="alert alert-danger text-danger ">
+       @erroMessage
+   </div>
+}
+<form method="post">
+ <div class="border p-3 mt4">
+<div class="row pb-2">
+    <h2 class="text-dark">Create Category</h2>
+    <hr />
+</div>
+       <div asp-validation-summary="All" id="errorAlert" ></div>   
+<div class="mb-3 row p-1">
+    <label asp-for="Name" class="p-0"></label> 
+    <input asp-for="Name" type="text" class="form-control"/>
+     <span asp-validation-for ="Name" class="text-danger"></span>
+</div>
+        <div class="mb-3 row p-1">
+            <label class="p-0">Display Order</label>
+            <input asp-for="DisplatOrder" type="int" class="form-control" />
+            <span asp-validation-for ="DisplatOrder" class="text-danger"></span>
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-3">  
+                <button type="submit" class="btn btn-primary form-control" >Create</button>
+            </div>
+            <div class="col-6  col-md-3">
+                <a asp-action="Index" asp-controller="Category" class="btn btn-secondary form-control">Back to List </a>
+            </div>
+        </div>
+ </div>
+</form>
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+    <script>
+        setTimeout(function () {
+            var alert = document.getElementById('errorAlert');
+            if (alert) {
+                alert.classList.remove('show');
+                alert.classList.add('fade');
+                alert.style.display = 'none';
+            }
+        }, 5000); // 5000 milliseconds = 5 seconds
+    </script>
+}

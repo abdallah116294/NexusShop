@@ -1,0 +1,41 @@
+﻿@using Nexus.Models.Models
+@model Category
+<form method="post" asp-action="Delete">
+    <div class="border p-3 mt4">
+        <div class="row pb-2">
+            <h2 class="text-dark">Delete Category</h2>
+            <hr />
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Name" class="p-0"></label>
+            <input asp-for="Name" disabled type="text" class="form-control" />
+        </div>
+        <div class="mb-3 row p-1">
+            <label class="p-0">Display Order</label>
+            <input asp-for="DisplatOrder" disabled type="int" class="form-control" />
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <button type="submit" class="btn btn-danger   form-control">Delete</button>
+            </div>
+            <div class="col-6  col-md-3">
+                <a asp-action="Index" asp-controller="Category" class="btn btn-secondary form-control">Back to List </a>
+            </div>
+        </div>
+    </div>
+</form>
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    <script>
+        setTimeout(function () {
+            var alert = document.getElementById('errorAlert');
+            if (alert) {
+                alert.classList.remove('show');
+                alert.classList.add('fade');
+                alert.style.display = 'none';
+            }
+        }, 5000); // 5000 milliseconds = 5 seconds
+    </script>
+}
